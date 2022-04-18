@@ -49,7 +49,7 @@ export default function Footer() {
       <Container>
         <Row>
           <Col className="mt-3 m-md-0 ms-5 col-sm-8 col-md-6">
-            <div class="social-container">
+            <div className="social-container">
               <p className="servicelink d-none d-sm-block">
                 Бидэнтэй нэгдээрэй
               </p>
