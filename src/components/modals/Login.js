@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import "../../styles/login.css";
 import { userServices } from "../../services/userServices";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../contexts/UserContext";
 
 function Login() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({});
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [screenSize, setScreenSize] = useState();
@@ -15,19 +17,25 @@ function Login() {
     setScreenSize(window.innerWidth);
   }, []);
   const handleSubmit = (e) => {
+    e.preventDefault();
     userServices
       .loginUser({
         email: e.target[0].value,
         password: e.target[1].value,
       })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        console.log(res.status);
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("data", JSON.stringify(data.data));
+        localStorage.setItem("token", data.token);
+        setUser({ name: data.data.name });
+        if (data.success) {
+          navigate({
+            pathname: "/",
+          });
+          // handleClose();
+        }
       });
   };
-
   return (
     <>
       {screenSize < 992 ? (

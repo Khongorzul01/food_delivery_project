@@ -7,10 +7,22 @@ export function useUser() {
 }
 
 export const UserProvider = (props) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
+  const [signUpUsers, setSignUp] = useState({});
+  console.log("sda");
   useEffect(() => {
-    localStorage.setItem("user", user);
-  });
+    console.log("sda");
+    if (localStorage.getItem("data")) {
+      const data = JSON.parse(localStorage.getItem("data"));
+      setUser({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        id: data.id,
+        address: data.address,
+      });
+    }
+  }, []);
   return (
     <UserContext.Provider value={[user, setUser]}>
       {props.children}

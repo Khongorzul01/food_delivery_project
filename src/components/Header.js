@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import "../css/header.css";
 import OffCanvasExample from "./modals/Basket";
+import { useUser } from "../contexts/UserContext";
 
 export default function Header() {
   const [selected, setSelected] = useState("mainSel");
@@ -17,10 +18,10 @@ export default function Header() {
   const [name1, setName] = useState("Hongoroo");
   const [tablet, setTablet] = useState(true);
   const [screenSize, setScreenSize] = useState();
+  const [user, setUser] = useUser();
   useEffect(() => {
     setScreenSize(window.innerWidth);
   }, []);
-
   return (
     <Navbar bg="light" expand="sm">
       <Container>
@@ -119,7 +120,7 @@ export default function Header() {
               </svg>
               <span className="menu-text">Сагс</span>
             </Nav.Link> */}
-            {login ? (
+            {!user ? (
               screenSize < 992 ? (
                 <Nav.Link href="/login" id="navbar-menu-link">
                   <svg
@@ -142,13 +143,15 @@ export default function Header() {
                 <Login />
               )
             ) : (
-              <NavDropdown title={name1} id="basic-nav-dropdown">
+              <NavDropdown title={user.name} id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.2">
                   Миний булан
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Settings</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Гарах</NavDropdown.Item>
+                <NavDropdown.Item onClick={localStorage.clear}>
+                  Гарах
+                </NavDropdown.Item>
               </NavDropdown>
             )}
           </div>

@@ -2,21 +2,40 @@ import React from "react";
 import { Form, Button } from "react-bootstrap";
 import "../styles/register.css";
 import { userServices } from "../services/userServices";
-
-const handleSubmit = (e) => {
-  userServices
-    .signUpUser({
-      email: e.target[0].value,
-      password: e.target[1].value,
-      name: e.target[2].value,
-      address: e.target[3].value,
-    })
-    .then((res) => {
-      return res.json();
-    });
-};
+import { useEffect, useState } from "react";
+import { useUser } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+  const [user, setUser] = useState({});
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    userServices
+      .signUpUser({
+        email: e.target[0].value,
+        password: e.target[1].value,
+        name: e.target[2].value,
+        address: e.target[3].value,
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        if (res.success == true) {
+          navigate({
+            pathname: "/login",
+          });
+        } else {
+          // setUser({
+          //   email: res.email,
+          //   password: res.password,
+          //   name: res.userName,
+          //   address: res.address,
+          // });
+          console.log("dfgh");
+        }
+      });
+  };
   return (
     <div>
       <div className="register">

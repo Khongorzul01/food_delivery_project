@@ -18,7 +18,7 @@
   color: #f17228 !important;
 }
 #basic-nav-dropdown {
-  color: black !important;
+  color: black;
 }
 .dropdown-toggle::after {
   vertical-align: 0.2em !important;

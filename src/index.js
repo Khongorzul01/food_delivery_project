@@ -4,11 +4,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FoodProvider } from "./contexts/FoodContext";
+import { UserProvider } from "./contexts/UserContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <FoodProvider>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </FoodProvider>
   </React.StrictMode>,
   document.getElementById("root")
