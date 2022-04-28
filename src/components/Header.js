@@ -19,6 +19,9 @@ export default function Header() {
   const [tablet, setTablet] = useState(true);
   const [screenSize, setScreenSize] = useState();
   const [user, setUser] = useUser();
+  const localClear = () => {
+    localStorage.clear();
+  };
   useEffect(() => {
     setScreenSize(window.innerWidth);
   }, []);
@@ -149,9 +152,7 @@ export default function Header() {
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Settings</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item onClick={localStorage.clear}>
-                  Гарах
-                </NavDropdown.Item>
+                <NavDropdown.Item onClick={localClear}>Гарах</NavDropdown.Item>
               </NavDropdown>
             )}
           </div>

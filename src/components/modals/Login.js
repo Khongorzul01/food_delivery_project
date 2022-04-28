@@ -29,9 +29,9 @@ function Login() {
         localStorage.setItem("token", data.token);
         setUser({ name: data.data.name });
         if (data.success) {
-          navigate({
-            pathname: "/",
-          });
+          // navigate({
+          //   pathname: "/",
+          // });
           // handleClose();
         }
       });

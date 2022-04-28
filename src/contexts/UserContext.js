@@ -8,10 +8,8 @@ export function useUser() {
 
 export const UserProvider = (props) => {
   const [user, setUser] = useState();
-  const [signUpUsers, setSignUp] = useState({});
-  console.log("sda");
+  const [signUp, setSignUp] = useState({});
   useEffect(() => {
-    console.log("sda");
     if (localStorage.getItem("data")) {
       const data = JSON.parse(localStorage.getItem("data"));
       setUser({
@@ -20,6 +18,11 @@ export const UserProvider = (props) => {
         password: data.password,
         id: data.id,
         address: data.address,
+      });
+    } else if (localStorage.getItem("data")) {
+      const data = JSON.parse(localStorage.getItem("data"));
+      setSignUp({
+        userName: data.data,
       });
     }
   }, []);
