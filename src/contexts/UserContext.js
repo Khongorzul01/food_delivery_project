@@ -11,23 +11,26 @@ export const UserProvider = (props) => {
   const [signUp, setSignUp] = useState({});
   useEffect(() => {
     if (localStorage.getItem("data")) {
-      const data = JSON.parse(localStorage.getItem("data"));
+      let data = JSON.parse(localStorage.getItem("data"));
+
       setUser({
-        name: data.name,
-        email: data.email,
-        password: data.password,
-        id: data.id,
-        address: data.address,
+        name: data.data.name,
+        email: data.data.email,
+        password: data.data.password,
+        id: data.data.id,
+        address: data.data.address,
       });
     } else if (localStorage.getItem("data")) {
       const data = JSON.parse(localStorage.getItem("data"));
       setSignUp({
-        userName: data.data,
+        userName: data.name,
       });
+      console.log("checked");
     }
   }, []);
+
   return (
-    <UserContext.Provider value={[user, setUser]}>
+    <UserContext.Provider value={[user, setUser]} value1={[signUp, setSignUp]}>
       {props.children}
     </UserContext.Provider>
   );

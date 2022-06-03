@@ -20,9 +20,19 @@ const getBasketInfo = async () => {
     }),
   });
 };
+const getCategory = async () => {
+  return await fetch("https://dev-api.mstars.mn/api/cats", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    // body: JSON.stringify(),
+  });
+};
 export const otherServices = {
   getAllFood,
   getBasketInfo,
+  getCategory,
 };
 /*
  1. GET https://dev-api.mstars.mn/api/cat/food/catyamarnegid/0

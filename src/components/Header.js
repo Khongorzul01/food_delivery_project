@@ -11,20 +11,28 @@ import {
 import "../css/header.css";
 import OffCanvasExample from "./modals/Basket";
 import { useUser } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigate = useNavigate();
   const [selected, setSelected] = useState("mainSel");
   const [login, setLogin] = useState(true);
   const [name1, setName] = useState("Hongoroo");
   const [tablet, setTablet] = useState(true);
   const [screenSize, setScreenSize] = useState();
   const [user, setUser] = useUser();
+  // console.log(user.name);
   const localClear = () => {
     localStorage.clear();
+    navigate("/");
+    window.location.reload(true);
   };
+
   useEffect(() => {
     setScreenSize(window.innerWidth);
+    console.log(user);
   }, []);
+
   return (
     <Navbar bg="light" expand="sm">
       <Container>

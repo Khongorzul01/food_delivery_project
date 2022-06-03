@@ -8,34 +8,26 @@ import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [user, setUser] = useState({});
+  const [signUp, setSignUp] = useState({});
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    userServices
-      .signUpUser({
-        email: e.target[0].value,
-        password: e.target[1].value,
-        name: e.target[2].value,
-        address: e.target[3].value,
-      })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-        if (res.success == true) {
-          navigate({
-            pathname: "/login",
-          });
-        } else {
-          // setUser({
-          //   email: res.email,
-          //   password: res.password,
-          //   name: res.userName,
-          //   address: res.address,
-          // });
-          console.log("dfgh");
-        }
-      });
+
+    userServices.signUpUser({
+      name: e.target[0].value,
+      password: e.target[4].value,
+      email: e.target[1].value,
+      address: e.target[2].value,
+    });
+
+    if (!localStorage.getItem("data")) {
+      navigate({ pathname: "/login" });
+      window.location.reload(true);
+    }
+    console.log(e.target[4].value);
   };
+
   return (
     <div>
       <div className="register">

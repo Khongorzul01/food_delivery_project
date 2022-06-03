@@ -1,18 +1,19 @@
 import { Form, Modal, Button, Nav, Container, NavLink } from "react-bootstrap";
+import { useUser } from "../../contexts/UserContext";
 import { useEffect, useState } from "react";
 import "../../styles/login.css";
 import { userServices } from "../../services/userServices";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../contexts/UserContext";
 
 function Login() {
   const navigate = useNavigate();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [screenSize, setScreenSize] = useState();
   const history = useNavigate();
+
   useEffect(() => {
     setScreenSize(window.innerWidth);
   }, []);
@@ -25,14 +26,13 @@ function Login() {
       })
       .then((res) => res.json())
       .then((data) => {
-        localStorage.setItem("data", JSON.stringify(data.data));
-        localStorage.setItem("token", data.token);
+        console.log(data);
+        localStorage.setItem("data", JSON.stringify(data));
         setUser({ name: data.data.name });
         if (data.success) {
-          // navigate({
-          //   pathname: "/",
-          // });
-          // handleClose();
+          navigate("/");
+          handleClose();
+          window.location.reload(true);
         }
       });
   };

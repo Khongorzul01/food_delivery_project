@@ -11,7 +11,7 @@ export default function Footer() {
           <Col sm="12" className="w-100 d-flex flex-nowrap ">
             <div className="footer-logo w-100">
               <a href="#" target="_blank" className="flex-nowrap  w-100">
-                <img className="food-logo" src="./images/logo.png" alt="logo" />
+                <img className="food-logo" src="/images/Logo.png" alt="logo" />
 
                 <span className="title">Food Delivery</span>
               </a>

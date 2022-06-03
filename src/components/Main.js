@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Carousel, Container, Row, Col } from "react-bootstrap";
+import { useCategory } from "../contexts/CategoryContext";
 import "../styles/Main.css";
+import SingleCard from "./SingleCard";
+import { useFood } from "../contexts/FoodContext";
+import Menu from "./Menu";
 
-export default function Main() {
+const Main = (props) => {
+  const [category, setCategory] = useCategory([]);
+
+  const [foods, setfoods] = useFood();
+  console.log(foods);
   return (
     <>
       <Carousel>
@@ -136,17 +144,33 @@ export default function Main() {
         </Container>
       </div>
       <Container>
-        <div className="see-foods d-flex justify-content-between align-items-center">
-          <div className="food-info d-flex align-items-center">
-            <div className="food-info-icon"></div>
-            <p> Хямдралтай</p>
-          </div>
+        {category.map((e) => {
+          return (
+            <div>
+              <div className="see-foods d-flex justify-content-between align-items-center">
+                <div className="food-info d-flex align-items-center">
+                  <div className="food-info-icon"></div>
+                  <p>{e.name}</p>
+                </div>
 
-          <a href="" className="see-all">
-            &#8250;
-          </a>
-        </div>
+                <a href="" className="see-all">
+                  &#8250;
+                </a>
+              </div>
+              <div className="d-flex flex-wrap">
+                {!foods.discount > 0
+                  ? foods
+                      .filter((food) => food.category === e.name)
+                      .map((a, index) => <SingleCard data={a} key={index} />)
+                  : foods
+                      .filter((food) => food.category === e.name)
+                      .map((a, index) => <SingleCard data={a} key={index} />)}
+              </div>
+            </div>
+          );
+        })}
       </Container>
     </>
   );
-}
+};
+export default Main;

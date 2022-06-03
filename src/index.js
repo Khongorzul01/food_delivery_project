@@ -5,12 +5,15 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FoodProvider } from "./contexts/FoodContext";
 import { UserProvider } from "./contexts/UserContext";
+import { CategoryProvider } from "./contexts/CategoryContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <FoodProvider>
       <UserProvider>
-        <App />
+        <CategoryProvider>
+          <App />
+        </CategoryProvider>
       </UserProvider>
     </FoodProvider>
   </React.StrictMode>,

@@ -25,7 +25,7 @@ function OffCanvasExample() {
       .then((data) => setfoodsData(data.baskets));
   }, []);
 
-  console.log(foodsData);
+  // console.log(foodsData);
   let totalPrice = 0;
   const total = () => {
     foodsData.forEach((foods) => {
