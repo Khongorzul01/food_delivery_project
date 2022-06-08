@@ -10,7 +10,7 @@ const Main = (props) => {
   const [category, setCategory] = useCategory([]);
 
   const [foods, setfoods] = useFood();
-  console.log(foods);
+
   return (
     <>
       <Carousel>

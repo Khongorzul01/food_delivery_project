@@ -9,7 +9,7 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import "../css/header.css";
-import OffCanvasExample from "./modals/Basket";
+// import OffCanvasExample from "./modals/Basket";
 import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
@@ -113,8 +113,8 @@ export default function Header() {
             />
           </Form>
           <div className="d-flex">
-            <OffCanvasExample />
-            {/* <Nav.Link href="#action4" id="navbar-menu-link">
+            {/* <OffCanvasExample /> */}
+            <Nav.Link href="#action4" id="navbar-menu-link">
               <svg
                 className="basket logo"
                 style={{ margin: "5px" }}
@@ -130,7 +130,7 @@ export default function Header() {
                 />
               </svg>
               <span className="menu-text">Сагс</span>
-            </Nav.Link> */}
+            </Nav.Link>
             {!user ? (
               screenSize < 992 ? (
                 <Nav.Link href="/login" id="navbar-menu-link">
