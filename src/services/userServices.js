@@ -1,5 +1,5 @@
 const loginUser = async (credentials) => {
-  return await fetch("https://dev-api.mstars.mn/admin/login", {
+  return await fetch("http://localhost:5000/api/users/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -10,6 +10,7 @@ const loginUser = async (credentials) => {
     }),
   });
 };
+
 const signUpUser = async (credentials) => {
   return await fetch("https://dev-api.mstars.mn/admin/register", {
     method: "POST",
