@@ -26,14 +26,17 @@ function Login() {
       })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        localStorage.setItem("data", JSON.stringify(data));
-        setUser({ name: data.data.name });
         if (data.success) {
-          navigate("/");
+          localStorage.setItem("user", JSON.stringify(data.data));
+          localStorage.setItem("token", JSON.stringify(data.token));
+          setUser({ data: data.data.name });
+          // navigate("/");
           handleClose();
           window.location.reload(true);
+        } else {
+          alert(data.message);
         }
+        console.log(user);
       });
   };
   return (

@@ -12,7 +12,7 @@ const loginUser = async (credentials) => {
 };
 
 const signUpUser = async (credentials) => {
-  return await fetch("https://dev-api.mstars.mn/admin/register", {
+  return await fetch("http://localhost:5000/api/users/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

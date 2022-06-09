@@ -10,18 +10,17 @@ export const UserProvider = (props) => {
   const [user, setUser] = useState();
   const [signUp, setSignUp] = useState({});
   useEffect(() => {
-    if (localStorage.getItem("data")) {
-      let data = JSON.parse(localStorage.getItem("data"));
-
+    if (localStorage.getItem("user")) {
+      let data = JSON.parse(localStorage.getItem("user"));
       setUser({
-        name: data.data.name,
-        email: data.data.email,
-        password: data.data.password,
-        id: data.data.id,
-        address: data.data.address,
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        id: data.id,
+        address: data.address,
       });
-    } else if (localStorage.getItem("data")) {
-      const data = JSON.parse(localStorage.getItem("data"));
+    } else if (localStorage.getItem("user")) {
+      const data = JSON.parse(localStorage.getItem("user"));
       setSignUp({
         userName: data.name,
       });

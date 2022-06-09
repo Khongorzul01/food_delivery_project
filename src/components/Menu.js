@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/menuMS.css";
-import { otherServices } from "../services/otherServices";
+
 import { NavLink } from "react-bootstrap";
 import SingleCard from "./SingleCard";
 import { Container } from "react-bootstrap";
@@ -10,8 +10,11 @@ import { Route, Routes } from "react-router-dom";
 export default function Menu() {
   const [filterdFoods, setFilteredFoods] = useState([]);
   const [foods, setfoods] = useFood();
+
   const hool = (e) => {
-    setFilteredFoods(foods.filter((food) => food.category == e.target.name));
+    setFilteredFoods(
+      foods.filter((food) => food.category.name == e.target.name)
+    );
   };
   console.log(filterdFoods);
   useEffect(() => {

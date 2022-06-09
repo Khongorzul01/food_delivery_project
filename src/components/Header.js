@@ -30,9 +30,8 @@ export default function Header() {
 
   useEffect(() => {
     setScreenSize(window.innerWidth);
-    console.log(user);
+    // console.log(user.name);
   }, []);
-
   return (
     <Navbar bg="light" expand="sm">
       <Container>

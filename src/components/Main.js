@@ -9,7 +9,7 @@ import Menu from "./Menu";
 const Main = (props) => {
   const [category, setCategory] = useCategory([]);
 
-  const [foods, setfoods] = useFood();
+  const [foods, setFoods] = useFood();
 
   return (
     <>
@@ -144,31 +144,53 @@ const Main = (props) => {
         </Container>
       </div>
       <Container>
-        {category.map((e) => {
-          return (
-            <div>
-              <div className="see-foods d-flex justify-content-between align-items-center">
-                <div className="food-info d-flex align-items-center">
-                  <div className="food-info-icon"></div>
-                  <p>{e.name}</p>
-                </div>
+        {category
+          .filter((c) => c.name !== "Хямдралтай")
+          .map((e) => {
+            return (
+              <div>
+                <div className="see-foods d-flex justify-content-between align-items-center">
+                  <div className="food-info d-flex align-items-center">
+                    <div className="food-info-icon"></div>
+                    <p>{e.name}</p>
+                  </div>
 
-                <a href="" className="see-all">
-                  &#8250;
-                </a>
+                  <a href="" className="see-all">
+                    &#8250;
+                  </a>
+                </div>
+                <div className="d-flex flex-wrap">
+                  {foods
+                    .filter((food) => food.category.name === e.name)
+                    .map((item, index) => {
+                      return <SingleCard data={item.item} key={index} />;
+                    })
+                    .slice(0, 4)}
+                </div>
               </div>
-              <div className="d-flex flex-wrap">
-                {!foods.discount > 0
-                  ? foods
-                      .filter((food) => food.category === e.name)
-                      .map((a, index) => <SingleCard data={a} key={index} />)
-                  : foods
-                      .filter((food) => food.category === e.name)
-                      .map((a, index) => <SingleCard data={a} key={index} />)}
-              </div>
+            );
+          })}
+      </Container>
+      <Container>
+        <div>
+          <div className="see-foods d-flex justify-content-between align-items-center">
+            <div className="food-info d-flex align-items-center">
+              <div className="food-info-icon"></div>
+              <p>Хямдралтай</p>
             </div>
-          );
-        })}
+
+            <a href="" className="see-all">
+              &#8250;
+            </a>
+          </div>
+          <div className="d-flex flex-wrap">
+            {foods
+              .filter((food) => food.item.discount > 0)
+              .map((item, index) => {
+                return <SingleCard data={item.item} key={index} />;
+              })}
+          </div>
+        </div>
       </Container>
     </>
   );
