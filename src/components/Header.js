@@ -19,7 +19,6 @@ export default function Header() {
   const [tablet, setTablet] = useState(true);
   const [screenSize, setScreenSize] = useState();
   const [user, setUser] = useUser();
-  // console.log(user.name);
   const localClear = () => {
     localStorage.clear();
     navigate("/");
@@ -28,7 +27,6 @@ export default function Header() {
 
   useEffect(() => {
     setScreenSize(window.innerWidth);
-    // console.log(user.name);
   }, []);
   const mainSel = () => {
     setSelected("mainSel");

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import "../../styles/basket.css";
 import { otherServices } from "../../services/otherServices";
+import { useFood } from "../";
 
 function OffCanvasExample() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [foodsData, setfoodsData] = useState([]);
+  console.log(foodsData);
   useEffect(() => {
     otherServices
       .getBasketInfo()
@@ -85,7 +87,7 @@ function OffCanvasExample() {
                   <button
                     type="button"
                     className="btn "
-                    onClick={handleDecrement}
+                    // onClick={handleDecrement}
                   >
                     -
                   </button>
@@ -95,7 +97,7 @@ function OffCanvasExample() {
                   <button
                     type="button"
                     className="btn "
-                    onClick={handleIncrement}
+                    // onClick={handleIncrement}
                   >
                     +
                   </button>
