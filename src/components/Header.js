@@ -16,8 +16,6 @@ import { useNavigate } from "react-router-dom";
 export default function Header() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("mainSel");
-  const [login, setLogin] = useState(true);
-  const [name1, setName] = useState("Hongoroo");
   const [tablet, setTablet] = useState(true);
   const [screenSize, setScreenSize] = useState();
   const [user, setUser] = useUser();
@@ -32,6 +30,19 @@ export default function Header() {
     setScreenSize(window.innerWidth);
     // console.log(user.name);
   }, []);
+  const mainSel = () => {
+    setSelected("mainSel");
+    navigate("/");
+  };
+  const foodSel = () => {
+    setSelected("foodSel");
+    console.log(selected);
+    // navigate("/menu");
+  };
+  const mapSel = () => {
+    setSelected("mapSel");
+    navigate("/deliveryZone");
+  };
   return (
     <Navbar bg="light" expand="sm">
       <Container>
@@ -60,24 +71,24 @@ export default function Header() {
             <Nav.Link
               id="navbar-menu-text"
               href="/"
-              onClick={() => setSelected("mainSel")}
-              className={selected == "mainSel" ? "activeMen" : "inactiveMen"}
+              onClick={mainSel}
+              className={selected === "mainSel" ? "activeMen" : "inactiveMen"}
             >
               <span className="menu-text2">НҮҮР</span>
             </Nav.Link>
             <Nav.Link
+              href="/menu"
               id="navbar-menu-text"
-              href="/menu/*"
-              onClick={() => setSelected("foodSel")}
-              className={selected == "foodSel" ? "activeMen" : "inactiveMen"}
+              onClick={foodSel}
+              className={selected === "foodSel" ? "activeMen" : "inactiveMen"}
             >
               <span className="menu-text2">ХООЛНЫ ЦЭС</span>
             </Nav.Link>
             <Nav.Link
               id="navbar-menu-text"
-              href="#action3"
-              onClick={() => setSelected("mapSel")}
-              className={selected == "mapSel" ? "activeMen" : "inactiveMen"}
+              href=""
+              onClick={mapSel}
+              className={selected === "mapSel" ? "activeMen" : "inactiveMen"}
             >
               <span className="menu-text2">ХҮРГЭЛТИЙН БҮС</span>
             </Nav.Link>

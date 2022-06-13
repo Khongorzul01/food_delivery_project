@@ -14,7 +14,7 @@ export default function SingleCard(props) {
 
         <div className="discount">
           <p
-            class={`${
+            className={`${
               props.data.discount > 0 ? "activePrice" : "disp-noactive"
             }`}
           >

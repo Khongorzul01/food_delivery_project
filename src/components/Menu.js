@@ -11,17 +11,18 @@ export default function Menu() {
   const [filterdFoods, setFilteredFoods] = useState([]);
   const [foods, setfoods] = useFood();
 
+  // console.log(foods);
   const hool = (e) => {
     setFilteredFoods(
       foods.filter((food) => food.category.name == e.target.name)
     );
   };
-  console.log(filterdFoods);
+
   useEffect(() => {
     setFilteredFoods(foods.filter((food) => food.category === "Үндсэн хоол"));
   }, [foods]);
   const sale = () => {
-    setFilteredFoods(foods.filter((sales) => sales.discount > 0));
+    setFilteredFoods(foods.filter((sales) => sales.item.discount > 0));
   };
   return (
     <Container className="menu-height">
@@ -75,7 +76,7 @@ export default function Menu() {
           element={
             <div className="d-flex flex-wrap">
               {filterdFoods.map((food, index) => (
-                <SingleCard data={food} key={index} />
+                <SingleCard data={food.item} key={index} />
               ))}
             </div>
           }

@@ -6,6 +6,7 @@ import Main from "./components/Main";
 import Menu from "./components/Menu";
 import Login from "./components/modals/Login";
 import Register from "./components/Register";
+import Delivery_zone from "./components/Delivery_zone";
 const App = () => {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/menu/*" element={<Menu />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/deliveryZone" element={<Delivery_zone />}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>
