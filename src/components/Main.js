@@ -5,11 +5,14 @@ import "../styles/Main.css";
 import SingleCard from "./SingleCard";
 import { useFood } from "../contexts/FoodContext";
 import Menu from "./Menu";
-
+// import Basket from "./modals/Basket";
 const Main = (props) => {
   const [category, setCategory] = useCategory([]);
 
   const [foods, setFoods] = useFood();
+  // const handleFoods = () => {
+  //   setShow(true);
+  // };
 
   return (
     <>
@@ -115,6 +118,7 @@ const Main = (props) => {
       <div className="features-body mt-0 w-100 pt-5">
         <Container>
           <div className="features d-inline-block w-100 col-12 col-md-4">
+            {/* <Basket /> */}
             <Row className="d-flex justify-content-around w-100 align-items-center p-3">
               <Col className="col-12 col-md-3 d-flex align-items-center">
                 <img src="/images/icontime.svg" alt="" />

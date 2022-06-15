@@ -12,6 +12,7 @@ import "../css/header.css";
 // import OffCanvasExample from "./modals/Basket";
 import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
+import Basket from "./modals/Basket";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -24,7 +25,11 @@ export default function Header() {
     navigate("/");
     window.location.reload(true);
   };
-
+  const openBasket = () => {
+    navigate({
+      pathname: "/basket",
+    });
+  };
   useEffect(() => {
     setScreenSize(window.innerWidth);
   }, []);
@@ -121,7 +126,12 @@ export default function Header() {
             />
           </Form>
           <div className="d-flex">
-            {/* <OffCanvasExample /> */}
+            {/* <OffCanvasExample Link={Link}
+      location={location}
+      config={{
+        push: true
+      }}/> */}
+
             <Nav.Link href="#action4" id="navbar-menu-link">
               <svg
                 className="basket logo"
@@ -137,7 +147,9 @@ export default function Header() {
                   fill="#F17228"
                 />
               </svg>
-              <span className="menu-text">Сагс</span>
+              <span className="menu-text" onClick={openBasket}>
+                Сагс
+              </span>
             </Nav.Link>
             {!user ? (
               screenSize < 992 ? (

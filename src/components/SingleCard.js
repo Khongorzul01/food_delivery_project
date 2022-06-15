@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/singleCardZul.css";
+import { useNavigate } from "react-router-dom";
+import FoodModal from "./modals/foodModal";
 
 export default function SingleCard(props) {
+  const navigate = useNavigate();
+  const handleFoods = () => {
+    setShow(true);
+  };
+  const [show, setShow] = useState(false);
   return (
-    <div className="d-flex">
-      <div className="card">
-        <div className="hover">
+    <div className="d-flex ">
+      <div className="card card-g ">
+        {show == true ? <FoodModal /> : null}
+
+        <div className="hover" onClick={handleFoods}>
           <img src="../images/basket_icon.svg" alt="" />
           <a href="" className="basket-text">
             Сагслах

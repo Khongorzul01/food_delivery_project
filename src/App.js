@@ -7,6 +7,9 @@ import Menu from "./components/Menu";
 import Login from "./components/modals/Login";
 import Register from "./components/Register";
 import Delivery_zone from "./components/Delivery_zone";
+// import BasketItem from "./components/contents/sub-contents/BasketItem";
+import Basket from "./components/modals/Basket";
+import FoodModal from "./components/modals/foodModal";
 const App = () => {
   return (
     <BrowserRouter>
