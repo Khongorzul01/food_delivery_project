@@ -19,6 +19,16 @@
   display: none;
 }
 
+.createModal {
+  position: relative;
+}
+.modalSee {
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(118, 115, 115, 0.345);
+  width: 100%;
+  height: 100%;
+}
 .activePrice {
   width: 46px;
   height: 26px;
