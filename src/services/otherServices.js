@@ -1,5 +1,5 @@
 const getAllFood = async () => {
-  return await fetch("http://54.151.252.30:5000/api/foods", {
+  return await fetch("http://54.151.252.30:3000/api/foods", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -21,7 +21,7 @@ const getBasketInfo = async () => {
   });
 };
 const getCategory = async () => {
-  return await fetch("http://54.151.252.30/api/categories", {
+  return await fetch("http://54.151.252.30:3000/api/categories", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
