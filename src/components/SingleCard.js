@@ -5,16 +5,21 @@ import FoodModal from "./modals/foodModal";
 
 export default function SingleCard(props) {
   const navigate = useNavigate();
-  const handleFoods = () => {
+  const handleShow = () => {
     setShow(true);
   };
   const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
   return (
     <div className="createModal">
-      <div className="modalSee">{show == true ? <FoodModal /> : null}</div>
+      <div className="modalSee">
+        {show == true ? (
+          <FoodModal show={show} handleClose={handleClose} data={props.data} />
+        ) : null}
+      </div>
       <div className="d-flex ">
-        <div className="card card-g ">
-          <div className="hover" onClick={handleFoods}>
+        <div className="card card-g " variant="primary" onClick={handleShow}>
+          <div className="hover">
             <img src="../images/basket_icon.svg" alt="" />
             <a href="" className="basket-text">
               Сагслах
